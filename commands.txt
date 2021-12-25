@@ -1,0 +1,2 @@
+print Hello Event LOOP!
+palindrom Petro
