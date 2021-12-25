@@ -1,2 +1,2 @@
 # software-architecturergr
-Розрахункова робота. У кожній гілці присутні виконані усі завдання варіантів
+## Main code you can find in benchmark_test.go, screens and graph in img folder
