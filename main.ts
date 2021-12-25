@@ -8,6 +8,13 @@ import {
   postMethodArgumentsType,
 } from './main.types';
 
+const COUNT: number = 163840;
+
+function getNanoSecTime() {
+  var hrTime = process.hrtime();
+  return hrTime[0] * 1000000000 + hrTime[1];
+}
+
 const print = (args: string | string[]) => {
   return new Promise((resolve, reject) => {
     try {
@@ -66,8 +73,12 @@ class EventLoop {
   private callStack: callStackTYPE = null;
   private callStackStatus: callStackStatusType = null;
 
+  private startDate: any;
+  private endDate: any;
+
   public start(): void {
     this.status = 'opened';
+    this.startDate = getNanoSecTime();
 
     console.log(`[Event Loop] *opened* | ${new Date().toISOString().substr(11, 8)}`);
   }
@@ -108,7 +119,14 @@ class EventLoop {
       (!this.callStackStatus || !this.callStackStatus.includes('pending'))
     ) {
       this.status = 'closed';
+      this.endDate = getNanoSecTime();
       console.log(`[Event Loop] *finished* | ${new Date().toISOString().substr(11, 8)}`);
+      console.log(this.endDate, this.startDate);
+      console.log(
+        `Process that contains ${COUNT} operations ends in ${
+          this.endDate - this.startDate
+        } ns.\nAverage time of one operation: ${(this.endDate - this.startDate) / COUNT} ns`
+      );
     }
   }
 
@@ -148,17 +166,13 @@ const main = async () => {
 
       if (!Object.keys(commandMatch).includes(command)) return;
 
-      eventLoop.post({ command, args: splittedItem.length === 1 ? splittedItem[0] : splittedItem });
-    });
-
-    eventLoop.post({
-      command: 'setTimeoutFunc',
-      args: {
-        timer: 1000,
-        func: () => {
-          console.log('setTimeout is completed');
-        },
-      },
+      const countArray = new Array(COUNT).fill(null);
+      countArray.forEach(() => {
+        eventLoop.post({
+          command,
+          args: splittedItem.length === 1 ? splittedItem[0] : splittedItem,
+        });
+      });
     });
 
     eventLoop.awaitFinish();

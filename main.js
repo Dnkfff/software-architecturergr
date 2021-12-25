@@ -37,6 +37,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var fs_1 = require("fs");
+var COUNT = 163840;
+function getNanoSecTime() {
+    var hrTime = process.hrtime();
+    return hrTime[0] * 1000000000 + hrTime[1];
+}
 var print = function (args) {
     return new Promise(function (resolve, reject) {
         try {
@@ -58,7 +63,6 @@ var palindrom = function (args) {
                 result = args.join('') + args.reverse().join('');
             }
             if (typeof args === 'string') {
-                console.log(args.split('').reverse().join(''));
                 result = args + args.split('').reverse().join('');
             }
             resolve(result);
@@ -109,6 +113,7 @@ var EventLoop = /** @class */ (function () {
     }
     EventLoop.prototype.start = function () {
         this.status = 'opened';
+        this.startDate = getNanoSecTime();
         console.log("[Event Loop] *opened* | ".concat(new Date().toISOString().substr(11, 8)));
     };
     EventLoop.prototype.checkCallStack = function () {
@@ -141,7 +146,10 @@ var EventLoop = /** @class */ (function () {
         if ((!this.callStack || this.callStack.length === 0) &&
             (!this.callStackStatus || !this.callStackStatus.includes('pending'))) {
             this.status = 'closed';
+            this.endDate = getNanoSecTime();
             console.log("[Event Loop] *finished* | ".concat(new Date().toISOString().substr(11, 8)));
+            console.log(this.endDate, this.startDate);
+            console.log("Process that contains ".concat(COUNT, " operations ends in ").concat(this.endDate - this.startDate, " ns.\nAverage time of one operation: ").concat((this.endDate - this.startDate) / COUNT, " ns"));
         }
     };
     EventLoop.prototype.post = function (_a) {
@@ -176,16 +184,13 @@ var main = function () { return __awaiter(void 0, void 0, void 0, function () {
                 var command = splittedItem.shift();
                 if (!Object.keys(commandMatch).includes(command))
                     return;
-                eventLoop.post({ command: command, args: splittedItem.length === 1 ? splittedItem[0] : splittedItem });
-            });
-            eventLoop.post({
-                command: 'setTimeoutFunc',
-                args: {
-                    timer: 1000,
-                    func: function () {
-                        console.log('setTimeout is completed');
-                    }
-                }
+                var countArray = new Array(COUNT).fill(null);
+                countArray.forEach(function () {
+                    eventLoop.post({
+                        command: command,
+                        args: splittedItem.length === 1 ? splittedItem[0] : splittedItem
+                    });
+                });
             });
             eventLoop.awaitFinish();
         });
