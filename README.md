@@ -16,4 +16,4 @@ node examples.js
 - Папка `db` містить SQL скрипти для ініціалізації БД сервера.
 
 - Діаграма взаємодії компонентів лабораторної роботи 
-- ![alt text](https://github.com/ddynikov/software-architecturergr/blob/lab3_task/image.jpg?raw=true)
+- ![alt text](https://github.com/ddynikov/software-architecturergr/blob/lab3_task/img/interaction_diagram.png)
