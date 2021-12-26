@@ -12,3 +12,12 @@
 Усі результати експериментних замірів, графік та діаграму взаємодії можете побачити у папці ASSETS
 
 ![screen 1](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/1.jpg)
+![screen 2](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/2.jpg)
+![screen 3](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/3.jpg)
+![screen 4](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/4.jpg)
+![screen 5](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/5.jpg)
+![screen 6](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/6.jpg)
+![screen 7](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/7.jpg)
+![screen 8](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/8.jpg)
+![screen 9](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/9.jpg)
+![screen 10](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/10.jpg)
