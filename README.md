@@ -26,7 +26,8 @@
 ![screen 14](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/14.jpg)
 ![screen 15](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/15.jpg)
 ![screen 16](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/16.jpg)
-Графік:
-![graph](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/17.jpg)
-Діаграму взаємодії:
+Діаграма взаємодії:
 ![diagram](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/%D0%B4%D1%96%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%B0%20%D0%B2%D0%B7%D0%B0%D1%94%D0%BC%D0%BE%D0%B4%D1%96%D1%97.png)
+
+Графік виконання:
+![graph](https://github.com/ddynikov/software-architecturergr/blob/lab4_task/assets/17.png)
